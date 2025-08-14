@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head id="start">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI复活 - 技术的温柔与边界</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="quick-nav">
+        <a href="#start">Start</a>
+        <span class="nav-separator">|</span>
+        <a href="#subtitleSection">第一章</a>
+        <span class="nav-separator">|</span>
+        <a href="#chapter2Section">第二章</a>
+        <span class="nav-separator">|</span>
+        <a href="#chapter3Section">第三章</a>
+        <span class="nav-separator">|</span>
+        <a href="#chapter4Section">第四章</a>
+        <span class="nav-separator">|</span>
+        <a href="#ending">Ending</a>
+    </nav>
+
+    <!-- 首页封面和介绍 -->
+    <div class="hero-section" id="hero">
+        <div class="hero-content">
+            <button class="start-btn" id="startBtn">Start Exploring</button>
+        </div>
+
+    </div>
+    <div class="subtitle-section" id="subtitleSection">
+        <div class="fullscreen-cover">
+            <img src="assets/第一章封面.png" alt="第一章封面" class="cover-image">
+            <div class="cover-content">
+                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
+                <p class="cover-subtitle">第一章：重逢</p>
+            </div>
+        </div>
+    </div>
+    <!-- 电影感垂直全屏切换（4张） -->
+    <div class="chapter1-section" id="chapter1Section">
+        <div class="fullscreen-vertical-gallery" id="verticalGallery">
+            <div class="vertical-slide active" data-index="1">
+                <img src="assets/chapter1（1）.png" alt="照片1">
+            </div>
+            <div class="vertical-slide" data-index="2">
+                <img src="assets/chapter1（2）.png" alt="照片2">
+            </div>
+            <div class="vertical-slide" data-index="3">
+                <img src="assets/chapter1（3）.png" alt="照片3">
+            </div>
+            <div class="vertical-slide" data-index="4">
+                <img src="assets/chapter1（4）.png" alt="照片4">
+            </div>
+        </div>
+        <!-- 图片指示器 -->
+        <div class="image-indicators" id="chapter1Indicators">
+            <div class="indicator active" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+            <div class="indicator" data-index="4"></div>
+        </div>
+        <!-- 动态字幕 -->
+        <div class="dynamic-subtitle" id="dynamicSubtitle">
+            <p class="subtitle-text"></p>
+        </div>
+    </div>
+
+    <!-- 技术分析部分 -->
+    <div class="analysis-section">
+        <div class="analysis-content">
+            <div class="topic-heat">
+                <h3>话题热度</h3>
+                <div class="heat-content" role="tablist" aria-label="热度维度">
+                    <button class="heat-item active" data-chart="attention" role="tab" aria-selected="true">
+                        <span class="heat-number">98.5%</span>
+                        <span class="heat-label">关注度</span>
+                    </button>
+                    <button class="heat-item" data-chart="discussion" role="tab" aria-selected="false">
+                        <span class="heat-number">2.3M</span>
+                        <span class="heat-label">讨论量</span>
+                    </button>
+                    <button class="heat-item" data-chart="engagement" role="tab" aria-selected="false">
+                        <span class="heat-number">156K</span>
+                        <span class="heat-label">参与度</span>
+                    </button>
+                </div>
+                <div id="chartContainer" class="chart-container" role="tabpanel" aria-live="polite"></div>
+            </div>
+            
+            <div class="tech-analysis">
+                <h3>技术解读</h3>
+                <div class="tech-items">
+                    <div class="tech-item" onclick="showTechDetail('facial')">
+                        <h4>面部动态复刻</h4>
+                        <p>通过深度学习算法，精确捕捉和重现面部表情的细微变化，实现真实的情感表达。</p>
+                    </div>
+                    <div class="tech-item" onclick="showTechDetail('tts')">
+                        <h4>TTS语音克隆</h4>
+                        <p>基于神经网络的语音合成技术，完美复制原声的音色、语调和情感色彩。</p>
+                    </div>
+                    <div class="tech-item" onclick="showTechDetail('interaction')">
+                        <h4>简单交互动画</h4>
+                        <p>通过动作捕捉和实时渲染，实现自然的挥手、点头等基础互动行为。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 技术详情页面 -->
+    <div id="techDetailModal" class="tech-detail-modal">
+        <div class="tech-detail-content">
+            <button class="close-btn" onclick="closeTechDetail()">&times;</button>
+            
+            <!-- 面部动态复刻详情 -->
+            <div id="facial-detail" class="tech-detail-page">
+                <h2>面部动态复刻技术</h2>
+                <div class="tech-detail-section">
+                    <div class="tech-image-container">
+                        <img src="assets/面部动态复刻技术展示.png" alt="面部动态复刻技术展示" class="tech-detail-image">
+                    </div>
+                    <h3>技术原理</h3>
+                    <p>基于 <strong>深度学习（Deep Learning）</strong> + <strong>神经辐射场（NeRF）</strong> + <strong>高精度动作捕捉</strong>，通过分析大量面部表情和肌肉运动数据，构建动态三维面部模型。借助 <strong>多模态传感器（RGB-D 摄像头、LiDAR、IMU）</strong>实时捕捉微表情，包括眼部眨动、唇形细微变化、眉毛运动等，并通过 AI 渲染还原出拟真的视觉效果。</p>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>核心技术升级版</h3>
+                    <ul>
+                        <li><strong>面部特征点检测：</strong>使用 MediaPipe FaceMesh（468+关键点）替代传统 68 点，精度更高</li>
+                        <li><strong>表情识别算法：</strong>融合 CNN 与 Transformer 架构，增强对情绪变化的感知</li>
+                        <li><strong>肌肉运动建模：</strong>结合 Blendshape + 物理肌肉模拟，还原皮肤褶皱与光影变化</li>
+                        <li><strong>实时渲染技术：</strong>使用 Unreal Engine 5 + GPU RT（实时光线追踪）提升细节质感</li>
+                    </ul>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>新增应用亮点</h3>
+                    <ul>
+                        <li><strong>虚拟人视频通话：</strong>实时驱动，实现面对面交流体验</li>
+                        <li><strong>历史人物复原：</strong>基于影像资料，重现历史人物的生动形象</li>
+                        <li><strong>高沉浸式数字分身：</strong>创造具有真实情感表达的数字形象</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TTS语音克隆详情 -->
+            <div id="tts-detail" class="tech-detail-page">
+                <h2>TTS语音克隆技术</h2>
+                <div class="tech-detail-section">
+                    <div class="tech-image-container">
+                        <img src="assets/TTS语音克隆技术展示.png" alt="TTS语音克隆技术展示" class="tech-detail-image">
+                    </div>
+                    <h3>技术原理</h3>
+                    <p>通过 <strong>零样本（Zero-Shot）语音克隆</strong> 和 <strong>情感语音合成（Emotional TTS）</strong> 技术，在短音频样本下复刻目标声音特征。深度学习模型会提取声纹、音色、语调、韵律等特征，并通过 <strong>多任务学习</strong> 同时保留情感色彩与个性化音质，实现高保真、低延迟的语音生成。</p>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>核心技术升级版</h3>
+                    <ul>
+                        <li><strong>声纹提取：</strong>使用 ECAPA-TDNN + Speaker Embedding 提高说话人识别稳定性</li>
+                        <li><strong>音素建模：</strong>Transformer-TTS（如 VITS、FastSpeech2）实现自然韵律控制</li>
+                        <li><strong>情感迁移：</strong>融合 Prosody Transfer，可将原音频的情绪状态迁移到新内容</li>
+                        <li><strong>实时合成：</strong>端侧加速（ONNX Runtime / TensorRT）实现毫秒级延迟</li>
+                    </ul>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>新增应用亮点</h3>
+                    <ul>
+                        <li><strong>可与全息投影结合：</strong>实现"开口说话"的震撼效果</li>
+                        <li><strong>历史录音修复与扩展：</strong>让珍贵的历史声音重现生机</li>
+                        <li><strong>多语言声音迁移：</strong>保留原声音色，支持多语言表达</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 智能交互动画详情 -->
+            <div id="interaction-detail" class="tech-detail-page">
+                <h2>智能交互动画技术</h2>
+                <div class="tech-detail-section">
+                    <div class="tech-image-container">
+                        <img src="assets\智能交互动画技术示意图.png" alt="智能交互动画技术展示" class="tech-detail-image">
+                    </div>
+                    <h3>技术原理</h3>
+                    <p>融合 <strong>AI行为预测（Behavior Prediction AI）</strong> + <strong>动作捕捉（Motion Capture）</strong> + <strong>物理模拟（Physics Simulation）</strong>，让数字形象能根据场景、语境、用户互动即时生成自然动作和表情。通过 <strong>深度强化学习（Deep Reinforcement Learning）</strong>，AI 可以学习不同情境下的最佳互动模式。</p>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>核心技术升级版</h3>
+                    <ul>
+                        <li><strong>动作库构建：</strong>采用 GAN 动作生成（MoGAN）扩展动作多样性</li>
+                        <li><strong>智能响应算法：</strong>基于 LLM + Contextual Gesture Mapping，让动作与语义匹配</li>
+                        <li><strong>平滑过渡技术：</strong>使用 Motion Matching 技术自动匹配前后动作，保证自然衔接</li>
+                        <li><strong>实时渲染优化：</strong>WebGPU / Nanite 技术提升帧率与细节</li>
+                    </ul>
+                </div>
+                <div class="tech-detail-section">
+                    <h3>新增应用亮点</h3>
+                    <ul>
+                        <li><strong>与用户语音实时互动：</strong>表情同步，增强交流体验</li>
+                        <li><strong>场景感知：</strong>虚拟人会"看向"声音来源，展现智能反应</li>
+                        <li><strong>动作与情绪联动：</strong>愤怒时手势加重，开心时笑容更明显</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 技术呈现后的过渡页面 -->
+    <div class="transition-section" id="transitionSection">
+        <div class="transition-content">
+            <!-- 第一个文本框（顶部段落） -->
+            <div class="text-box text-box-1">
+                <p>4月3日，清明节前夕，</p>
+                <p>来自广东的市民刘晴晴通过电商平台购买的AI"数字复活"服务，</p>
+                <p>成功生成了已故外公的动态影像，视频中外公不仅面容清晰，</p>
+                <p>更能自然做出眨眼、微笑、挥手等动作，</p>
+                <p>为这个缅怀先人的传统节日增添了科技与温情交织的特殊注脚。</p>
+            </div>
+            
+            <!-- 第二个文本框（中部段落） -->
+            <div class="text-box text-box-2">
+                <p>刘晴晴在接受采访时坦言，外公生前与母亲有心结没解开，</p>
+                <p>直到外公去世两人都没能见上最后一面，这成为母亲多年来的遗憾。</p>
+                <p>当她将这段AI生成的动态视频展示给母亲时，</p>
+            </div>
+            
+            <!-- 第三个文本框（底部段落） -->
+            <div class="text-box text-box-3">
+                <p>刘晴晴表示，看着母亲与屏幕中"外公"隔空"相望"的场景，</p>
+                <p>她深刻体会到技术的温度：</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二章模块封皮 -->
+    <div class="subtitle-section" id="chapter2Section">
+        <div class="fullscreen-cover">
+            <img src="assets/第二章封面.png" alt="第二章封面" class="cover-image">
+            <div class="cover-content">
+                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
+                <p class="cover-subtitle">第二章：边界</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第二章图片展示区 -->
+    <div class="chapter2-section" id="chapter2PhotosSection">
+        <div class="fullscreen-vertical-gallery" id="chapter2VerticalGallery">
+            <div class="vertical-slide active" data-index="1">
+                <img src="assets/chapter2（1）.png" alt="边界探索1">
+            </div>
+            <div class="vertical-slide" data-index="2">
+                <img src="assets/chapter2（2）.png" alt="边界探索2">
+            </div>
+            <div class="vertical-slide" data-index="3">
+                <img src="assets/chapter2（3）.png" alt="边界探索3">
+            </div>
+        </div>
+        <!-- 图片指示器 -->
+        <div class="image-indicators" id="chapter2Indicators">
+            <div class="indicator active" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+        </div>
+    </div>
+
+    <!-- 第二章节过渡页面 -->
+    <div class="transition-section" id="chapter2TransitionSection">
+        <div class="transition-content">
+            <!-- 左侧文本框 -->
+            <div class="text-box text-box-chapter2-left">
+                <p>在AI复活技术的边界探索中，</p>
+                <p>我们不仅要面对技术本身的挑战，</p>
+                <p>更要思考伦理、法律和社会的深层问题。</p>
+                <p>技术的边界在哪里？</p>
+                <p>我们如何在不伤害他人的前提下，</p>
+                <p>让逝去的亲人"重生"？</p>
+                <p>这些问题没有标准答案，</p>
+                <p>但我们必须勇敢面对，</p>
+                <p>在探索中找到平衡。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第三章模块封皮 -->
+    <div class="subtitle-section" id="chapter3Section">
+        <div class="fullscreen-cover">
+            <img src="assets/第三章封面.jpg" alt="第三章封面" class="cover-image">
+            <div class="cover-content">
+                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
+                <p class="cover-subtitle">第三章：温柔</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第四章模块封皮 -->
+    <div class="subtitle-section" id="chapter4Section">
+        <div class="fullscreen-cover">
+            <img src="assets/第四章封面.png" alt="第四章封面" class="cover-image">
+            <div class="cover-content">
+                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
+                <p class="cover-subtitle">第四章：未来</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 第四章六张照片滑动模块 -->
+    <div class="chapter4-section" id="chapter4PhotosSection">
+        <div class="fullscreen-vertical-gallery" id="chapter4VerticalGallery">
+            <div class="vertical-slide active" data-index="1">
+                <img src="assets/chapter4（1）.jpg" alt="未来场景1">
+            </div>
+            <div class="vertical-slide" data-index="2">
+                <img src="assets/chapter4（2）.jpg" alt="未来场景2">
+            </div>
+            <div class="vertical-slide" data-index="3">
+                <img src="assets/chapter4（3）.jpg" alt="未来场景3">
+            </div>
+            <div class="vertical-slide" data-index="4">
+                <img src="assets/chapter4（4）.jpg" alt="未来场景4">
+            </div>
+            <div class="vertical-slide" data-index="5">
+                <img src="assets/chapter4（5）.jpg" alt="未来场景5">
+            </div>
+            <div class="vertical-slide" data-index="6">
+                <img src="assets\chapter1（1）.png" alt="未来场景6">
+            </div>
+        </div>
+        <!-- 图片指示器 -->
+        <div class="image-indicators" id="chapter4Indicators">
+            <div class="indicator active" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+            <div class="indicator" data-index="3"></div>
+            <div class="indicator" data-index="4"></div>
+            <div class="indicator" data-index="5"></div>
+            <div class="indicator" data-index="6"></div>
+        </div>
+        <!-- 动态字幕 -->
+        <div class="dynamic-subtitle" id="chapter4DynamicSubtitle">
+            <p class="subtitle-text"></p>
+        </div>
+    </div>
+
+    <!-- Ending部分 -->
+    <div class="ending-section" id="ending">
+        <div class="ending-content">
+            <h2 class="ending-title">结束语</h2>
+            <p class="ending-text">AI复活技术让我们重新思考生命、记忆与技术的边界。在追求技术进步的同时，我们也要保持对生命的敬畏和对人性的思考。</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
