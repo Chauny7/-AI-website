@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌入功能使用示例</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .example {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .code {
+            background: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>嵌入功能使用示例</h1>
+    
+    <div class="note">
+        <strong>注意：</strong>这些示例需要在主页面（index.html）中运行，因为它们依赖于主页面的JavaScript函数。
+    </div>
+
+    <h2>1. 嵌入图片示例</h2>
+    <div class="example">
+        <p>点击下面的按钮来嵌入不同的图片：</p>
+        <button class="button" onclick="embedImageByCode('https://picsum.photos/600/400?random=1', '随机图片1')">
+            嵌入随机图片1
+        </button>
+        <button class="button" onclick="embedImageByCode('https://picsum.photos/600/400?random=2', '随机图片2')">
+            嵌入随机图片2
+        </button>
+        <button class="button" onclick="embedImageByCode('https://picsum.photos/600/400?random=3', '随机图片3')">
+            嵌入随机图片3
+        </button>
+        
+        <div class="code">
+// 代码示例
+embedImageByCode('https://picsum.photos/600/400?random=1', '随机图片1');
+        </div>
+    </div>
+
+    <h2>2. 嵌入Tableau示例</h2>
+    <div class="example">
+        <p>点击下面的按钮来嵌入Tableau图表：</p>
+        <button class="button" onclick="embedTableauByCode('https://public.tableau.com/views/RegionalSampleWorkbook/Storms')">
+            嵌入Tableau示例图表
+        </button>
+        <button class="button" onclick="embedTableauByCode('https://public.tableau.com/views/WorldIndicators/GDPpercapita')">
+            嵌入GDP图表
+        </button>
+        
+        <div class="code">
+// 代码示例
+embedTableauByCode('https://public.tableau.com/views/RegionalSampleWorkbook/Storms');
+        </div>
+    </div>
+
+    <h2>3. 返回图表模式</h2>
+    <div class="example">
+        <p>点击下面的按钮返回默认的图表显示：</p>
+        <button class="button" onclick="showChart()">
+            显示图表
+        </button>
+        
+        <div class="code">
+// 代码示例
+showChart();
+        </div>
+    </div>
+
+    <h2>4. 完整使用流程</h2>
+    <div class="example">
+        <p>这是一个完整的使用流程示例：</p>
+        <button class="button" onclick="demoWorkflow()">
+            演示完整流程
+        </button>
+        
+        <div class="code">
+// 完整流程示例
+function demoWorkflow() {
+    // 1. 嵌入图片
+    embedImageByCode('https://picsum.photos/600/400?random=4', '演示图片');
+    
+    // 2. 3秒后嵌入Tableau
+    setTimeout(() => {
+        embedTableauByCode('https://public.tableau.com/views/RegionalSampleWorkbook/Storms');
+    }, 3000);
+    
+    // 3. 6秒后返回图表
+    setTimeout(() => {
+        showChart();
+    }, 6000);
+}
+        </div>
+    </div>
+
+    <h2>5. 自定义图片路径</h2>
+    <div class="example">
+        <p>你可以使用本地图片或网络图片：</p>
+        <button class="button" onclick="embedImageByCode('assets/chapter1（1）.png', '本地图片')">
+            嵌入本地图片
+        </button>
+        <button class="button" onclick="embedImageByCode('https://via.placeholder.com/600x400/007bff/ffffff?text=自定义图片', '占位图片')">
+            嵌入占位图片
+        </button>
+        
+        <div class="code">
+// 本地图片示例
+embedImageByCode('assets/chapter1（1）.png', '本地图片');
+
+// 网络图片示例
+embedImageByCode('https://via.placeholder.com/600x400/007bff/ffffff?text=自定义图片', '占位图片');
+        </div>
+    </div>
+
+    <script>
+        // 演示完整流程的函数
+        function demoWorkflow() {
+            // 1. 嵌入图片
+            embedImageByCode('https://picsum.photos/600/400?random=4', '演示图片');
+            
+            // 2. 3秒后嵌入Tableau
+            setTimeout(() => {
+                embedTableauByCode('https://public.tableau.com/views/RegionalSampleWorkbook/Storms');
+            }, 3000);
+            
+            // 3. 6秒后返回图表
+            setTimeout(() => {
+                showChart();
+            }, 6000);
+        }
+        
+        // 检查函数是否可用
+        window.addEventListener('load', function() {
+            if (typeof embedImageByCode === 'undefined') {
+                document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>请在主页面中打开此文件</h2><p>这些示例需要在主页面（index.html）中运行才能正常工作。</p></div>';
+            }
+        });
+    </script>
+</body>
+</html>

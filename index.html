@@ -3,7 +3,7 @@
 <head id="start">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI复活 - 技术的温柔与边界</title>
+    <title>当AI重构逝者:慰藉的温柔与技术的僭越</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -12,17 +12,19 @@
 <body>
     <!-- 导航栏 -->
     <nav class="quick-nav">
-        <a href="#start">Start</a>
+        <a href="#hero" title="按S键快速回到首页">Start</a>
         <span class="nav-separator">|</span>
-        <a href="#subtitleSection">第一章</a>
+        <a href="#subtitleSection"title="第一章">第一章</a>
         <span class="nav-separator">|</span>
-        <a href="#chapter2Section">第二章</a>
+        <a href="#chapter2Section"title="第二章">第二章</a>
         <span class="nav-separator">|</span>
-        <a href="#chapter3Section">第三章</a>
+        <a href="#chapter3Section"title="第三章">第三章</a>
         <span class="nav-separator">|</span>
-        <a href="#chapter4Section">第四章</a>
+        <a href="#chapter4Section"title="第四章">第四章</a>
         <span class="nav-separator">|</span>
         <a href="#ending">Ending</a>
+        <span class="nav-separator">|</span>
+        <a href="#" onclick="showStaffPage()" title="制作团队">制作团队</a>
     </nav>
 
     <!-- 首页封面和介绍 -->
@@ -36,7 +38,7 @@
         <div class="fullscreen-cover">
             <img src="assets/第一章封面.png" alt="第一章封面" class="cover-image">
             <div class="cover-content">
-                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
+                <h2 class="cover-title">当AI重构逝者:慰藉的温柔与技术的僭越</h2>
                 <p class="cover-subtitle">第一章：重逢</p>
             </div>
         </div>
@@ -45,16 +47,19 @@
     <div class="chapter1-section" id="chapter1Section">
         <div class="fullscreen-vertical-gallery" id="verticalGallery">
             <div class="vertical-slide active" data-index="1">
-                <img src="assets/chapter1（1）.png" alt="照片1">
+                <img src="assets/chapter1.png" alt="照片0">
             </div>
             <div class="vertical-slide" data-index="2">
-                <img src="assets/chapter1（2）.png" alt="照片2">
+                <img src="assets/chapter1（1）.png" alt="照片1">
             </div>
             <div class="vertical-slide" data-index="3">
-                <img src="assets/chapter1（3）.png" alt="照片3">
+                <img src="assets/chapter1（2）.png" alt="照片2">
             </div>
             <div class="vertical-slide" data-index="4">
-                <img src="assets/chapter1（4）.png" alt="照片4">
+                <img src="assets/chapter1（3）.png" alt="照片3">
+            </div>
+            <div class="vertical-slide" data-index="5">
+                <img src="assets/chapter4（1）.png" alt="照片4">
             </div>
         </div>
         <!-- 图片指示器 -->
@@ -63,6 +68,7 @@
             <div class="indicator" data-index="2"></div>
             <div class="indicator" data-index="3"></div>
             <div class="indicator" data-index="4"></div>
+            <div class="indicator" data-index="5"></div>
         </div>
         <!-- 动态字幕 -->
         <div class="dynamic-subtitle" id="dynamicSubtitle">
@@ -73,39 +79,113 @@
     <!-- 技术分析部分 -->
     <div class="analysis-section">
         <div class="analysis-content">
+            <!-- 左上角三位哥矢量图 -->
+            <div class="top-left-image">
+                <img src="assets/chapter1（三位哥矢量图）.png" alt="三位哥矢量图" class="vector-image-top">
+            </div>
+
+            <!-- 右下角矢量图 -->
+            <div class="bottom-right-image">
+                <img src="assets/chapter1（书籍矢量图）.png" alt="书籍矢量图" class="vector-image">
+            </div>
+            
             <div class="topic-heat">
-                <h3>话题热度</h3>
-                <div class="heat-content" role="tablist" aria-label="热度维度">
-                    <button class="heat-item active" data-chart="attention" role="tab" aria-selected="true">
-                        <span class="heat-number">98.5%</span>
-                        <span class="heat-label">关注度</span>
-                    </button>
-                    <button class="heat-item" data-chart="discussion" role="tab" aria-selected="false">
-                        <span class="heat-number">2.3M</span>
-                        <span class="heat-label">讨论量</span>
-                    </button>
-                    <button class="heat-item" data-chart="engagement" role="tab" aria-selected="false">
-                        <span class="heat-number">156K</span>
-                        <span class="heat-label">参与度</span>
-                    </button>
+                <div class="glass-container">
+                    <h3>话题热度</h3>
+                    <div class="heat-content" role="tablist" aria-label="热度维度">
+                        <button class="heat-item active" data-chart="attention" role="tab" aria-selected="true">
+                            <span class="heat-number">98.5%</span>
+                            <span class="heat-label">关注度</span>
+                        </button>
+                        <button class="heat-item" data-chart="discussion" role="tab" aria-selected="false">
+                            <span class="heat-number">2.3M</span>
+                            <span class="heat-label">讨论量</span>
+                        </button>
+                        <button class="heat-item" data-chart="engagement" role="tab" aria-selected="false">
+                            <span class="heat-number">156K</span>
+                            <span class="heat-label">参与度</span>
+                        </button>
+                    </div>
+                    <div id="chartContainer" class="chart-container" role="tabpanel" aria-live="polite">
+                        <!-- 图表内容区域 -->
+                        <div id="chartContent" class="content-area active" data-type="chart">
+                            <div class="flourish-embed flourish-bubble-chart" data-src="visualisation/24715759">
+                                <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                <noscript>
+                                    <img src="https://public.flourish.studio/visualisation/24715759/thumbnail" width="100%" alt="bubble-chart visualization" />
+                                </noscript>
+                            </div>
+                        </div>
+                        
+                        <!-- 图片内容区域（隐藏，仅用于代码嵌入） -->
+                        <div id="imageContent" class="content-area" data-type="image" style="display: none;">
+                            <div id="imagePreview" class="image-preview">
+                                <img id="previewImg" alt="嵌入图片">
+                            </div>
+                            <!-- 图片内容区域也嵌入Flourish图表 -->
+                            <div class="flourish-embed flourish-bubble-chart" data-src="visualisation/24715759">
+                                <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                <noscript>
+                                    <img src="https://public.flourish.studio/visualisation/24715759/thumbnail" width="100%" alt="bubble-chart visualization" />
+                                </noscript>
+                            </div>
+                        </div>
+                        
+                        <!-- Tableau内容区域（隐藏，仅用于代码嵌入） -->
+                        <div id="tableauContent" class="content-area" data-type="tableau" style="display: none;">
+                            <div id="tableauPreview" class="tableau-preview">
+                                <!-- Tableau内容区域也嵌入Flourish图表 -->
+                                <div class="flourish-embed flourish-bubble-chart" data-src="visualisation/24715759">
+                                    <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                    <noscript>
+                                        <img src="https://public.flourish.studio/visualisation/24715759/thumbnail" width="100%" alt="bubble-chart visualization" />
+                                    </noscript>
+                                </div>
+                                <!-- 示例iframe -->
+                                <iframe 
+                                    src="https://example.com" 
+                                    width="800" 
+                                    height="600" 
+                                    style="border: 2px solid #ccc;">
+                                </iframe>
+                                
+                                <!-- 文本框区域 -->
+                                <div class="tableau-text-overlay">
+                                    <div class="tableau-text-item">
+                                        <span class="tableau-text-label">关注度:</span>
+                                        <span class="tableau-text-value">98.5%</span>
+                                    </div>
+                                    <div class="tableau-text-item">
+                                        <span class="tableau-text-label">讨论量:</span>
+                                        <span class="tableau-text-value">2.3M</span>
+                                    </div>
+                                    <div class="tableau-text-item">
+                                        <span class="tableau-text-label">参与度:</span>
+                                        <span class="tableau-text-value">156K</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="chartContainer" class="chart-container" role="tabpanel" aria-live="polite"></div>
             </div>
             
             <div class="tech-analysis">
-                <h3>技术解读</h3>
-                <div class="tech-items">
-                    <div class="tech-item" onclick="showTechDetail('facial')">
-                        <h4>面部动态复刻</h4>
-                        <p>通过深度学习算法，精确捕捉和重现面部表情的细微变化，实现真实的情感表达。</p>
-                    </div>
-                    <div class="tech-item" onclick="showTechDetail('tts')">
-                        <h4>TTS语音克隆</h4>
-                        <p>基于神经网络的语音合成技术，完美复制原声的音色、语调和情感色彩。</p>
-                    </div>
-                    <div class="tech-item" onclick="showTechDetail('interaction')">
-                        <h4>简单交互动画</h4>
-                        <p>通过动作捕捉和实时渲染，实现自然的挥手、点头等基础互动行为。</p>
+                <div class="glass-container tech-glass">
+                    <h3>技术解读</h3>
+                    <div class="tech-items">
+                        <div class="tech-item" onclick="showTechDetail('facial')">
+                            <h4>面部动态复刻</h4>
+                            <p>通过深度学习算法，精确捕捉和重现面部表情的细微变化，实现真实的情感表达。</p>
+                        </div>
+                        <div class="tech-item" onclick="showTechDetail('tts')">
+                            <h4>TTS语音克隆</h4>
+                            <p>基于神经网络的语音合成技术，完美复制原声的音色、语调和情感色彩。</p>
+                        </div>
+                        <div class="tech-item" onclick="showTechDetail('interaction')">
+                            <h4>简单交互动画</h4>
+                            <p>通过动作捕捉和实时渲染，实现自然的挥手、点头等基础互动行为。</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -151,7 +231,7 @@
                 <h2>TTS语音克隆技术</h2>
                 <div class="tech-detail-section">
                     <div class="tech-image-container">
-                        <img src="assets/TTS语音克隆技术展示.png" alt="TTS语音克隆技术展示" class="tech-detail-image">
+                        <img src="assets/TTS语音克隆技术展示.jpg" alt="TTS语音克隆技术展示" class="tech-detail-image">
                     </div>
                     <h3>技术原理</h3>
                     <p>通过 <strong>零样本（Zero-Shot）语音克隆</strong> 和 <strong>情感语音合成（Emotional TTS）</strong> 技术，在短音频样本下复刻目标声音特征。深度学习模型会提取声纹、音色、语调、韵律等特征，并通过 <strong>多任务学习</strong> 同时保留情感色彩与个性化音质，实现高保真、低延迟的语音生成。</p>
@@ -211,24 +291,18 @@
         <div class="transition-content">
             <!-- 第一个文本框（顶部段落） -->
             <div class="text-box text-box-1">
-                <p>4月3日，清明节前夕，</p>
-                <p>来自广东的市民刘晴晴通过电商平台购买的AI"数字复活"服务，</p>
-                <p>成功生成了已故外公的动态影像，视频中外公不仅面容清晰，</p>
-                <p>更能自然做出眨眼、微笑、挥手等动作，</p>
-                <p>为这个缅怀先人的传统节日增添了科技与温情交织的特殊注脚。</p>
+                <p>“做这个视频完全是为了妈妈。”</p>
             </div>
             
             <!-- 第二个文本框（中部段落） -->
             <div class="text-box text-box-2">
-                <p>刘晴晴在接受采访时坦言，外公生前与母亲有心结没解开，</p>
-                <p>直到外公去世两人都没能见上最后一面，这成为母亲多年来的遗憾。</p>
-                <p>当她将这段AI生成的动态视频展示给母亲时，</p>
+                <p>“妈妈看到的瞬间就泪流满面，那些积压多年的情绪一下子释放了出来。”</p>
             </div>
             
             <!-- 第三个文本框（底部段落） -->
             <div class="text-box text-box-3">
-                <p>刘晴晴表示，看着母亲与屏幕中"外公"隔空"相望"的场景，</p>
-                <p>她深刻体会到技术的温度：</p>
+                <p>“这一刻，我真正感受到了AI的意义</p>
+                <p>————做这个视频完全是为了妈妈。”</p>
             </div>
         </div>
     </div>
@@ -238,8 +312,8 @@
         <div class="fullscreen-cover">
             <img src="assets/第二章封面.png" alt="第二章封面" class="cover-image">
             <div class="cover-content">
-                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
-                <p class="cover-subtitle">第二章：边界</p>
+                <h2 class="cover-title">当AI重构逝者:慰藉的温柔与技术的僭越</h2>
+                <p class="cover-subtitle">第二章：喧寂</p>
             </div>
         </div>
     </div>
@@ -256,51 +330,140 @@
             <div class="vertical-slide" data-index="3">
                 <img src="assets/chapter2（3）.png" alt="边界探索3">
             </div>
+            <div class="vertical-slide" data-index="4">
+                <img src="assets/chapter2（4）.png" alt="边界探索4">
+            </div>
         </div>
         <!-- 图片指示器 -->
         <div class="image-indicators" id="chapter2Indicators">
             <div class="indicator active" data-index="1"></div>
             <div class="indicator" data-index="2"></div>
             <div class="indicator" data-index="3"></div>
+            <div class="indicator" data-index="4"></div>
+        </div>
+        <!-- 动态字幕 -->
+        <div class="dynamic-subtitle" id="chapter2DynamicSubtitle">
+            <p class="subtitle-text"></p>
         </div>
     </div>
 
     <!-- 第二章节过渡页面 -->
     <div class="transition-section" id="chapter2TransitionSection">
         <div class="transition-content">
-            <!-- 左侧文本框 -->
-            <div class="text-box text-box-chapter2-left">
-                <p>在AI复活技术的边界探索中，</p>
-                <p>我们不仅要面对技术本身的挑战，</p>
-                <p>更要思考伦理、法律和社会的深层问题。</p>
-                <p>技术的边界在哪里？</p>
-                <p>我们如何在不伤害他人的前提下，</p>
-                <p>让逝去的亲人"重生"？</p>
-                <p>这些问题没有标准答案，</p>
-                <p>但我们必须勇敢面对，</p>
-                <p>在探索中找到平衡。</p>
+            <!-- 第一个文本框 -->
+            <div class="text-box text-box-chapter2-part1">
+                <p>在一座古老的港口，静泊着一艘名为"特修斯号"的船。它曾经跨越风暴、穿过晨雾，承载着无数归航与离别的故事。</p>
+                <p>岁月的盐与风，不断侵蚀着船体的每一寸木板。</p>
+                <p>当一块船板腐朽，就有人替换上新的；当桅杆折断，就有人立起新的；当船帆破裂，就有人缝上更坚韧的布。</p>
+                <p>如此日复一日，年复一年——直到某一天，整艘船的每一块木头、每一颗铁钉，都不再是最初的那一件。</p>
+            </div>
+            <!-- 第二个文本框 -->
+            <div class="text-box text-box-chapter2-part2">
+                <p>于是，港口的老人们开始低声议论：</p>
+                <p>"这还是那艘曾出征的特修斯号吗？"</p>
+                <p>有人说，当然是，它依旧泊在这里，航行的故事未曾断绝；</p>
+                <p>也有人说，不，它早已换了血肉，只剩一个名字在海风中飘荡。</p>
+            </div>
+            
+            <!-- 第三个文本框 -->
+            <div class="text-box text-box-chapter2-part3">
+                <p>而更深的疑问是——</p>
+                <p>若有人收集了那一块块被替换下来的旧船板，又重新拼成了一艘船，那一艘才是真正的"特修斯号"？</p>
+                <p>海浪没有回答，海风也不回答。</p>
+                <p>它们只是继续拍打着岸边，好像在提醒人们：我们每个人，或许都是一艘缓缓更换零件的船。</p>
             </div>
         </div>
+    </div>
+
+    <!-- 自定义背景页面 -->
+    <div class="custom-background-section" id="customBackgroundSection">
+        <!-- Flourish图表 -->
+        <div class="flourish-embed flourish-chart" data-src="visualisation/24723505">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+            <noscript>
+                <img src="https://public.flourish.studio/visualisation/24723505/thumbnail" width="100%" alt="chart visualization" />
+            </noscript>
+        </div>
+    </div>
+
+<!-- 自定义封面页面1 -->
+    <div class="custom-cover-section" id="customCoverSection1">
+    <!-- 直接插入Flourish iframe -->
+        <div class="flourish-embed flourish-bubble-chart" data-src="visualisation/24715759">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+            <noscript>
+                <img src="https://public.flourish.studio/visualisation/24715759/thumbnail" width="100%" alt="bubble-chart visualization" />
+            </noscript>
+        </div>
+</div>
+
+    <!-- 自定义封面页面2 -->
+    <div class="custom-cover-section" id="customCoverSection2">
+        <!-- 这里可以嵌入自定义背景 -->
     </div>
 
     <!-- 第三章模块封皮 -->
     <div class="subtitle-section" id="chapter3Section">
         <div class="fullscreen-cover">
-            <img src="assets/第三章封面.jpg" alt="第三章封面" class="cover-image">
+            <img src="assets/第三章封面.png" alt="第三章封面" class="cover-image">
             <div class="cover-content">
-                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
-                <p class="cover-subtitle">第三章：温柔</p>
+                <h2 class="cover-title">当AI重构逝者:慰藉的温柔与技术的僭越</h2>
+                <p class="cover-subtitle">第三章：扰魂</p>
             </div>
         </div>
     </div>
 
-    <!-- 第四章模块封皮 -->
+    <!-- 第三幕照片展示区 -->
+    <div class="chapter3-photos-section" id="chapter3PhotosSection">
+        <div class="fullscreen-vertical-gallery" id="chapter3VerticalGallery">
+            <div class="vertical-slide active" data-index="1">
+                <img src="assets/chapter3（剧情1）.png" alt="第三幕照片1">
+            </div>
+            <div class="vertical-slide" data-index="2">
+                <img src="E:\项目\数据新闻大赛\网页（2）\assets\chapter3（剧情）.png" alt="第三幕照片2">
+            </div>
+        </div>
+        
+        <!-- 指示器 -->
+        <div class="gallery-indicators" id="chapter3Indicators">
+            <div class="indicator active" data-index="1"></div>
+            <div class="indicator" data-index="2"></div>
+        </div>
+        
+        <!-- 动态字幕 -->
+        <div class="dynamic-subtitle" id="chapter3DynamicSubtitle">
+            <div class="subtitle-text"></div>
+        </div>
+    </div>
+
+    <!-- 第三幕自定义背景页面 -->
+    <div class="chapter3-custom-background-section" id="chapter3CustomBackgroundSection">
+        <div class="chapter3-photos-container">
+            <img src="assets/chapter3（拍立得-乔（final））.png" alt="拍立得-乔" class="chapter3-photo" onclick="showQiaoPage()">
+            <img src="assets/chapter3（拍立得-高（final））.png" alt="拍立得-高" class="chapter3-photo" onclick="showGaoPage()">
+            <img src="E:\项目\数据新闻大赛\网页（2）\assets\chapter3（拍立得-coco（final））.png" alt="拍立得-coco" class="chapter3-photo" onclick="showCocoPage()">
+        </div>
+    </div>
+
+    <!-- 第三幕自定义封面页面1 -->
+    <div class="custom-cover-section" id="chapter3CustomCoverSection1">
+        <!-- 这里可以嵌入自定义背景 -->
+    </div>
+
+    <!-- 第三幕自定义封面页面2 -->
+    <div class="custom-cover-section" id="chapter3CustomCoverSection2">
+        <!-- 这里可以嵌入自定义背景 -->
+    </div>
+
+
+
+    <!-- 第四章：归念 -->
     <div class="subtitle-section" id="chapter4Section">
         <div class="fullscreen-cover">
             <img src="assets/第四章封面.png" alt="第四章封面" class="cover-image">
             <div class="cover-content">
-                <h2 class="cover-title">AI复活，技术的温柔与边界</h2>
-                <p class="cover-subtitle">第四章：未来</p>
+                <h2 class="cover-title">当AI重构逝者:慰藉的温柔与技术的僭越</h2>
+                <p class="cover-subtitle">第四章：归念</p>
             </div>
         </div>
     </div>
@@ -309,22 +472,25 @@
     <div class="chapter4-section" id="chapter4PhotosSection">
         <div class="fullscreen-vertical-gallery" id="chapter4VerticalGallery">
             <div class="vertical-slide active" data-index="1">
-                <img src="assets/chapter4（1）.jpg" alt="未来场景1">
+                <img src="assets/chapter4（1）.png" alt="未来场景1">
             </div>
             <div class="vertical-slide" data-index="2">
-                <img src="assets/chapter4（2）.jpg" alt="未来场景2">
+                <img src="assets/chapter4（2）.png" alt="未来场景2">
             </div>
             <div class="vertical-slide" data-index="3">
-                <img src="assets/chapter4（3）.jpg" alt="未来场景3">
+                <img src="assets/chapter4（3）.png" alt="未来场景3">
             </div>
             <div class="vertical-slide" data-index="4">
-                <img src="assets/chapter4（4）.jpg" alt="未来场景4">
+                <img src="assets/chapter4（4）.png" alt="未来场景4">
             </div>
             <div class="vertical-slide" data-index="5">
-                <img src="assets/chapter4（5）.jpg" alt="未来场景5">
+                <img src="assets/chapter4（5）.png" alt="未来场景5">
             </div>
             <div class="vertical-slide" data-index="6">
-                <img src="assets\chapter1（1）.png" alt="未来场景6">
+                <img src="assets\chapter4（6）.png" alt="未来场景6">
+            </div>
+            <div class="vertical-slide" data-index="7">
+                <img src="E:\项目\数据新闻大赛\网页（2）\assets\chapter4（7）.png" alt="自定义背景">
             </div>
         </div>
         <!-- 图片指示器 -->
@@ -335,6 +501,7 @@
             <div class="indicator" data-index="4"></div>
             <div class="indicator" data-index="5"></div>
             <div class="indicator" data-index="6"></div>
+            <div class="indicator" data-index="7"></div>
         </div>
         <!-- 动态字幕 -->
         <div class="dynamic-subtitle" id="chapter4DynamicSubtitle">
@@ -347,6 +514,175 @@
         <div class="ending-content">
             <h2 class="ending-title">结束语</h2>
             <p class="ending-text">AI复活技术让我们重新思考生命、记忆与技术的边界。在追求技术进步的同时，我们也要保持对生命的敬畏和对人性的思考。</p>
+        </div>
+    </div>
+
+    <!-- 矢量图弹窗 -->
+    <div class="vector-image-modal" id="vectorImageModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="弹窗图片">
+            </div>
+            <div class="modal-text">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Coco AI复活伦理问题页面 -->
+    <div class="coco-page" id="cocoPage">
+        <!-- 返回按钮 -->
+        <div class="back-button" onclick="goBack()">
+            <span>← 返回</span>
+        </div>
+        
+        <!-- 自定义背景内容 -->
+        <div class="coco-custom-background-content">
+            <!-- 照片直接显示 -->
+            <img src="assets/chapter3（拍立得-coco（final））.png" alt="Coco拍立得" class="coco-photo">
+            
+            <!-- 文本容器 -->
+            <div class="coco-text-container">
+                <!-- 第一个文本框 -->
+                <div class="text-box coco-text-box-1">
+                    <p>你们好吗，我是CoCo李玟。<br>在我离开这个世界的那一刻起，<br>我一直能感受到你们无尽的爱与支持……</p>
+                </div>
+                
+                <!-- 第二个文本框 -->
+                <div class="text-box coco-text-box-2">
+                    <p>巨大心理冲击与二次伤害</p>
+                </div>
+                
+                <!-- 第三个文本框 -->
+                <div class="text-box coco-text-box-3">
+                    <p>借温情之名<br>牟非法之利</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 乔任梁 AI复活伦理问题页面 -->
+    <div class="coco-page" id="qiaoPage">
+        <!-- 返回按钮 -->
+        <div class="back-button" onclick="goBack()">
+            <span>← 返回</span>
+        </div>
+        
+        <!-- 自定义背景内容 -->
+        <div class="coco-custom-background-content">
+            <!-- 照片直接显示 -->
+            <img src="assets/chapter3（拍立得-乔（final））.png" alt="乔任梁拍立得" class="coco-photo">
+            
+            <!-- 文本容器 -->
+            <div class="coco-text-container">
+                <!-- 第一个文本框 -->
+                <div class="text-box coco-text-box-1">
+                    <p>"大家好，我是乔任梁，<br>其实我并没有真的离开……"</p>
+                </div>
+                
+                <!-- 第二个文本框 -->
+                <div class="text-box coco-text-box-2">
+                    <p>"我希望对方能尽快将视频下架，<br>他们未征求我们同意，这是在揭伤疤。"</p>
+                </div>
+                
+                <!-- 第三个文本框 -->
+                <div class="text-box coco-text-box-3">
+                    <p>"强烈拒绝以数字的形式复活，<br>到底不是人本身！！！"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 高以翔 AI复活伦理问题页面 -->
+    <div class="coco-page" id="gaoPage">
+        <!-- 返回按钮 -->
+        <div class="back-button" onclick="goBack()">
+            <span>← 返回</span>
+        </div>
+        
+        <!-- 自定义背景内容 -->
+        <div class="coco-custom-background-content">
+            <!-- 照片直接显示 -->
+            <img src="assets/chapter3（拍立得-高（final））.png" alt="高以翔拍立得" class="coco-photo">
+            
+            <!-- 文本容器 -->
+            <div class="coco-text-container">
+                <!-- 第一个文本框 -->
+                <!-- 第一个文本框 -->
+                <div class="text-box coco-text-box-1">
+                    <p>"活着的人们好不容易跨过了悲伤和叹息，<br>却又用这种技术让他们继续深陷缅怀和逝去的过去……"</p>
+                </div>
+                
+                <!-- 第二个文本框 -->
+                <div class="text-box coco-text-box-2">
+                    <p>"ai这东西就是一把双刃剑，<br>那些完全没考虑ai会带来什么样的后果的人<br>就会无脑吹，毕竟他们还没被ai坑过。"</p>
+                </div>
+                
+                <!-- 第三个文本框 -->
+                <div class="text-box coco-text-box-3">
+                    <p>"此类行为未经授权，已严重侵犯肖像权，<br>更对家人造成严重的二次伤害。"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 制作团队页面 -->
+    <div class="staff-page" id="staffPage">
+        <!-- 返回按钮 -->
+        <div class="back-button" onclick="goBack()">
+            <span>← 返回</span>
+        </div>
+        
+        <!-- Staff List 内容 -->
+        <div class="staff-content">
+            <!-- 标题 -->
+            <div class="staff-title">
+                <h1>制作团队</h1>
+                <div class="title-line"></div>
+            </div>
+            
+            <!-- 制作团队部分 -->
+            <div class="staff-section">
+                <h2>制作团队</h2>
+                <div class="staff-list">
+                    <div class="staff-item">
+                        <span class="staff-name">柳玥言</span>
+                    </div>
+                    <div class="staff-item">
+                        <span class="staff-name">王昊</span>
+                    </div>
+                    <div class="staff-item">
+                        <span class="staff-name">王艺霏</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 指导老师部分 -->
+            <div class="staff-section">
+                <h2>指导老师</h2>
+                <div class="teacher-list">
+                    <div class="teacher-item">
+                        <span class="teacher-name">李立老师</span>
+                        <span class="teacher-school">成都大学文学与新闻传播学院</span>
+                    </div>
+                    <div class="teacher-item">
+                        <span class="teacher-name">孔娟老师</span>
+                        <span class="teacher-school">成都大学文学与新闻传播学院</span>
+                    </div>
+                    <div class="teacher-item">
+                        <span class="teacher-name">任子毅老师</span>
+                        <span class="teacher-school">成都大学斯特灵学院</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 结束语 -->
+            <div class="staff-ending">
+                <p>感谢所有参与者的支持与帮助</p>
+                <div class="ending-line"></div>
+            </div>
         </div>
     </div>
 
