@@ -409,6 +409,196 @@ body {
     transform: scale(1.1);
 }
 
+/* 黑色背景页面样式 - 插入iframe图表 */
+.black-background-section {
+    width: 100vw;
+    height: 100vh;
+    background: #787777; /* 纯黑背景 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.black-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px;
+    padding-top: 200px; /* 增加顶部内边距，让内容向下移动 */
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* 图表和图片容器样式 */
+.chart-image-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1600px;
+    height: 800px;
+    gap: 40px;
+}
+
+/* 黑色背景页面的Flourish iframe样式 */
+.black-background-section .flourish-embed {
+    flex: 1;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+/* 右侧热度趋势图样式 */
+.trend-image {
+    flex: 0 0 400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trend-vector-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.black-background-section .flourish-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+}
+
+/* 新闻页面样式 */
+.news-section {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-background {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.news-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 新闻页面中的矢量图样式 */
+.news-vector-image {
+    position: absolute;
+    bottom: 75px;
+    right: 950px;
+    z-index: 10;
+}
+
+/* 包页面矢量图特殊位置调整 */
+.news-section#newsBaoSection .news-vector-image {
+    bottom: 150px;
+}
+
+.vector-image-news {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 交互按钮样式 */
+.interactive-button {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* 浮现的新闻图片基础样式 */
+.floating-news-image {
+    position: absolute;
+    top: 40%;
+    z-index: 20;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.floating-news-image.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 刘德华页面浮现图片样式 - 偏左边，照片调大 */
+.liu-dehua-floating {
+    left: 30%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+}
+
+/* 包页面浮现图片样式 - 偏右边，照片调小 */
+.bao-floating {
+    left: 70%;
+    transform: translate(-50%, -50%);
+    max-width: 60%;
+    max-height: 60%;
+}
+
+.floating-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* 第二个黑色背景页面的弹幕图片样式 */
+.top-right-danmaku {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    z-index: 10;
+}
+
+.danmaku-image-top {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.bottom-left-danmaku {
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    z-index: 10;
+}
+
+.danmaku-image-bottom {
+    width: 300px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
 /* 技术分析部分样式 */
 .analysis-section {
     width: 100vw;
@@ -851,8 +1041,336 @@ body {
     font-size: 16px;
 }
 
+/* 技术概览区域样式 */
+.tech-overview {
+    margin-top: 80px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.overview-glass {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 18px;
+    padding: 35px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    min-height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.overview-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.overview-glass::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0.25),
+        rgba(255, 255, 255, 0.5)
+    );
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.overview-glass h3 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.overview-description {
+    font-size: 1rem;
+    color: #e0e0e0;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+/* 技术详情预览界面样式 */
+.tech-detail-preview {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 35px;
+    margin-top: 30px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-height: 700px;
+    min-height: 600px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.tech-detail-preview::-webkit-scrollbar {
+    width: 8px;
+}
+
+.tech-detail-preview::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.tech-detail-preview::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.tech-detail-preview::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 预览内容样式 */
+.preview-content {
+    display: none;
+    animation: fadeInUp 0.3s ease;
+}
+
+.preview-content.active {
+    display: block;
+}
+
+/* 概览预览样式 */
+.preview-overview h4 {
+    color: #2c3e50;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.tech-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-item:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.summary-text {
+    color: #495057;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.preview-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.5;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+/* 技术详情预览样式 */
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+    background: linear-gradient(135deg, #495057 0%, #6c757d 100%);
+    margin: -35px -35px 25px -35px;
+    padding: 25px 35px 20px 35px;
+    border-radius: 15px 15px 0 0;
+}
+
+.preview-header h4 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    font-weight: bold;
+}
+
+.preview-close, .close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-weight: bold;
+}
+
+.preview-close:hover, .close-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.preview-body {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    height: calc(100% - 80px);
+    overflow: hidden;
+}
+
+/* 左侧图片区域 */
+.preview-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px 0 0 12px;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.preview-image {
+    text-align: center;
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.preview-image img {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.preview-image img:hover {
+    transform: scale(1.05);
+}
+
+/* 右侧文字区域 */
+.preview-right {
+    flex: 1;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 0 12px 12px 0;
+    overflow-y: auto;
+}
+
+.preview-text h5 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    font-weight: bold;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+.preview-text p {
+    color: #495057;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.preview-text ul {
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 25px;
+}
+
+.preview-text li {
+    margin-bottom: 12px;
+    padding-left: 5px;
+    position: relative;
+}
+
+.preview-text li::before {
+    content: "•";
+    color: #6c757d;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+/* 淡入动画 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 技术解读区域样式 */
 .tech-analysis {
-    margin-top: 40px;
+    margin-top: 80px;
     position: relative;
 }
 
@@ -868,17 +1386,16 @@ body {
 
 .tech-items {
     display: grid;
-    grid-template-columns: 1fr; /* 单列布局，适应较小的容器宽度 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 响应式网格布局 */
     gap: 40px; /* 增加间距，适应更大的容器高度 */
     width: 100%;
-    height: 100%; /* 确保占满容器高度 */
 }
 
 .tech-item {
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 18px;
-    padding: 30px; /* 增加内边距，适应更大的容器 */
+    padding: 35px; /* 增加内边距，适应更大的容器 */
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
@@ -886,7 +1403,9 @@ body {
     box-shadow: 
         0 8px 25px rgba(0, 0, 0, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    min-height: 120px; /* 设置最小高度，确保内容分布均匀 */
+    min-height: 140px; /* 设置最小高度，确保内容分布均匀 */
+    position: relative;
+    overflow: hidden;
 }
 
 .tech-item:hover {
@@ -903,12 +1422,102 @@ body {
     font-size: 1.6rem; /* 增加字体大小，适应更大的容器 */
     margin-bottom: 15px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    text-align: center;
 }
 
 .tech-item p {
     color: #e0e0e0;
     font-size: 1.1rem; /* 增加字体大小，适应更大的容器 */
     line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 15px;
+}
+
+/* 技术图标样式 */
+.tech-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* 技术标签样式 */
+.tech-tag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 技术应用场景样式 */
+.tech-applications {
+    margin-top: 50px;
+    position: relative;
+}
+
+.applications-glass {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.applications-glass h3 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.application-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.application-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.application-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.application-item h4 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.application-item p {
+    color: #d0d0d0;
+    font-size: 1rem;
+    line-height: 1.5;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -2605,13 +3214,108 @@ body {
 
 /* 特修斯之船页面保持原有样式 */
 #customBackgroundSection {
-    background: url('E:/项目/数据新闻大赛/网页（2）/assets/chapter2（问卷背景）.png');
+    background: url('../assets/chapter2（问卷）.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     /* 确保图片直接显示，不加任何滤镜效果 */
     filter: none;
     -webkit-filter: none;
+}
+
+/* 调整Flourish图表位置 */
+#customBackgroundSection .flourish-embed {
+    margin-left: -100px; /* 向左移动100px */
+}
+
+/* 态度分析文本框位置调整 */
+.attitude-text-box-1 {
+    position: absolute;
+    left: 5%; /* 页面左边 */
+    top: 50%;
+    z-index: 15;
+}
+
+.attitude-text-box-2 {
+    position: absolute;
+    right: 5%; /* 页面右边 */
+    top: 15%; /* 右上位置 */
+    z-index: 15;
+}
+
+.attitude-text-box-3 {
+    position: absolute;
+    right: 5%; /* 页面右边 */
+    bottom: 15%; /* 右下位置 */
+    z-index: 15;
+}
+
+/* 情感倾向背景页面样式 */
+#emotionTendencySection {
+    background-image: url('../assets/chapter2（情感倾向）.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* 情感倾向页面中的Flourish雷达图样式 */
+#emotionTendencySection .flourish-embed {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vw; /* 设置为视口宽度的95% */
+    height: 100vh; /* 设置为视口高度的95% */
+    z-index: 10;
+    max-width: none; /* 移除最大宽度限制 */
+    max-height: none; /* 移除最大高度限制 */
+}
+
+/* 价格背景页面样式 */
+#priceBackgroundSection {
+    background-image: url('../assets/chapter2（价格）.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/* 价格背景页面中的Flourish图表样式 */
+#priceBackgroundSection .flourish-embed {
+    position: absolute;
+    top: 20%; /* 靠中上位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw; /* 设置为视口宽度的80% */
+    height: 60vh; /* 设置为视口高度的60% */
+    z-index: 10;
+    max-width: 1200px; /* 最大宽度限制 */
+    max-height: 600px; /* 最大高度限制 */
+}
+
+/* 价格具体图样式 */
+.price-detail-image {
+    position: absolute;
+    bottom: 20%; /* 偏下位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60vw; /* 设置为视口宽度的60% */
+    height: auto; /* 高度自适应，保持比例 */
+    max-width: 800px; /* 最大宽度限制 */
+    z-index: 10;
+    object-fit: contain; /* 保持图片比例 */
+}
+
+/* 第三幕自定义封面页面3中的Flourish象形图样式 */
+#chapter3CustomCoverSection3 .flourish-embed {
+    position: absolute;
+    top: 50%;
+    left: 25%; /* 放在页面左半边 */
+    transform: translateY(-50%); /* 只垂直居中，不水平居中 */
+    width: 50vw; /* 缩小到视口宽度的50% */
+    height: 60vh; /* 缩小到视口高度的60% */
+    z-index: 10;
+    max-width: 800px; /* 减小最大宽度限制 */
+    max-height: 600px; /* 减小最大高度限制 */
 }
 
 
@@ -2889,10 +3593,10 @@ body {
 .custom-cover-section {
     width: 100vw;           /* 使用视口宽度，确保完全覆盖 */
     height: 100vh;          /* 使用视口高度，确保完全覆盖 */
-    background-size: 100% 100%; /* 强制背景图片完全覆盖容器 */
-    background-position: center;
+    background-size: cover; /* 使用cover确保背景完全覆盖，保持比例 */
+    background-position: center center; /* 居中定位 */
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; /* 固定背景，滚动时不动 */
     overflow: hidden;        /* 防止滚动条出现 */
     position: relative;
     opacity: 0;
@@ -2903,10 +3607,9 @@ body {
     margin: 0;
     padding: 0;
     /* 额外的背景优化 */
-    -webkit-background-size: 100% 100%;
-    -moz-background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 .custom-cover-section.in-view {
@@ -2921,7 +3624,12 @@ body {
     min-height: 500px;
 }
 
-.flourish-bubble-chart {
+.flourish-word-cloud {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.flourish-bar-chart-race {
     border-radius: 10px;
     overflow: hidden;
 }
@@ -2939,6 +3647,59 @@ body {
     background-size: 100% 100%; /* 确保完全覆盖 */
 }
 
+#customCoverSection3 {
+    background-image: url('../assets/chapter2（使用情景）.png');
+    background-size: 100% 100%; /* 确保完全覆盖 */
+}
+
+/* 为自定义封面页面3的Flourish图表添加特殊样式 */
+#customCoverSection3 .flourish-embed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 600px;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+#customCoverSection3 .flourish-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+/* 矢量图背景样式 */
+.vector-background-image {
+    position: absolute;
+    top: 45%;
+    left: 23%; /* 往左边移动 */
+    width: 60%; /* 缩小图片宽度 */
+    height: 60%; /* 缩小图片高度 */
+    object-fit: contain; /* 改为contain保持图片比例 */
+    z-index: 1;
+    opacity: 0.8; /* 设置透明度，让Flourish图表更清晰 */
+    transform: translate(-50%, -50%); /* 居中定位 */
+}
+
+/* 确保Flourish图表在矢量图之上 */
+#customCoverSection3 .flourish-embed {
+    position: relative;
+    z-index: 2;
+    margin-left: -65%; /* 往左边移动 */
+    margin-top: -55%; /* 往上移动 */
+    transform: rotate(5deg); /* 顺时针倾斜5度 */
+    transform-origin: center center; /* 以中心为旋转基准点 */
+}
+
 #chapter3CustomCoverSection1 {
     background-image: url('../assets/chapter3（世界法律背景图）.png');
     background-size: 100% 100%; /* 确保完全覆盖 */
@@ -2947,6 +3708,18 @@ body {
 #chapter3CustomCoverSection2 {
     background-image: url('../assets/chapter3（专家评价背景）.png');
     background-size: 100% 100%; /* 确保完全覆盖 */
+}
+
+#chapter3CustomCoverSection3 {
+    background-image: url('../assets/chapter3（问卷背景）.png');
+    background-size: cover; /* 使用cover确保背景完全覆盖，保持比例 */
+    background-position: center center; /* 居中定位 */
+}
+
+#endingCustomCoverSection {
+    background-image: url('../assets/chapter2（问卷背景）.png'); /* 可以替换为其他背景图片 */
+    background-size: cover; /* 使用cover确保背景完全覆盖，保持比例 */
+    background-position: center center; /* 居中定位 */
 }
 
 /* 照片直接显示样式 */
@@ -3020,71 +3793,73 @@ body {
     pointer-events: auto;
 }
 
-/* Coco页面文本框定位样式 */
-.coco-text-box-1 {
-    position: absolute;    /* 改为absolute定位，相对于父容器定位 */
-    top: 15%;             /* 调整位置：顶部 */
-    left: 60%;            /* 调整位置：往右边移动一点 */
+/* Coco页面文本框定位样式 - 完全独立 */
+#cocoPage .coco-text-box-1 {
+    position: absolute;    /* 独立定位，不与其他页面关联 */
+    top: 20%;             /* 自定义位置：顶部 */
+    left: 40%;            /* 自定义位置：左侧 */
     width: auto;          /* 自适应宽度 */
     height: auto;         /* 自适应高度 */
     min-height: 80px;     /* 最小高度 */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    padding: 25px 35px;   /* 增加内边距 */
+    padding: 25px 35px;   /* 内边距 */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    z-index: 15;          /* 提高z-index，确保在照片之上 */
-    font-size: 35px;      /* 设置字号为35 */
-    font-family: 'KaiTi', '楷体', serif; /* 设置楷体 */
-    white-space: normal;  /* 允许换行 */
-    opacity: 1 !important; /* 强制显示，不被hide类影响 */
-    transform: none !important; /* 强制显示，不被hide类影响 */
+    z-index: 15;          /* z-index层级 */
+    font-size: 35px;      /* 字体大小 */
+    font-family: 'KaiTi', '楷体', serif; /* 字体样式 */
+    white-space: normal;  /* 文字换行 */
+    opacity: 1 !important; /* 强制显示 */
+    transform: none !important; /* 强制显示 */
 }
 
-.coco-text-box-2 {
-    position: absolute;    /* 改为absolute定位，相对于父容器定位 */
-    top: 40%;             /* 调整位置：中间 */
-    right: 70%;           /* 调整位置：往左一点 */
+#cocoPage .coco-text-box-2 {
+    position: absolute;    /* 独立定位，不与其他页面关联 */
+    top: 85%;             /* 自定义位置：中间 */
+    right: 70%;           /* 自定义位置：右侧 */
     width: auto;          /* 自适应宽度 */
     height: auto;         /* 自适应高度 */
     min-height: 80px;     /* 最小高度 */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    padding: 30px 40px;   /* 增加内边距 */
+    padding: 25px 35px;   /* 内边距 */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    z-index: 15;          /* 提高z-index，确保在照片之上 */
-    font-size: 35px;      /* 设置字号为35 */
-    font-family: 'KaiTi', '楷体', serif; /* 设置楷体 */
-    white-space: normal;  /* 允许换行 */
-    opacity: 1 !important; /* 强制显示，不被hide类影响 */
-    transform: none !important; /* 强制显示，不被hide类影响 */
+    z-index: 15;          /* z-index层级 */
+    font-size: 35px;      /* 字体大小 */
+    font-family: 'KaiTi', '楷体', serif; /* 字体样式 */
+    white-space: normal;  /* 文字换行 */
+    opacity: 1 !important; /* 强制显示 */
+    transform: none !important; /* 强制显示 */
 }
 
-.coco-text-box-3 {
-    position: absolute;    /* 改为absolute定位，相对于父容器定位 */
-    bottom: 3%;          /* 调整位置：往左下一点 */
-    left: 20%;            /* 调整位置：往左下一点 */
+#cocoPage .coco-text-box-3 {
+    position: absolute;    /* 独立定位，不与其他页面关联 */
+    bottom: 30%;          /* 自定义位置：底部 */
+    left: 82%;            /* 自定义位置：左侧 */
     width: auto;          /* 自适应宽度 */
     height: auto;         /* 自适应高度 */
     min-height: 80px;     /* 最小高度 */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    padding: 25px 35px;   /* 增加内边距 */
+    padding: 25px 35px;   /* 内边距 */
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    z-index: 15;          /* 提高z-index，确保在照片之上 */
-    font-size: 35px;      /* 设置字号为35 */
-    font-family: 'KaiTi', '楷体', serif; /* 设置楷体 */
-    white-space: normal;  /* 允许换行 */
-    opacity: 1 !important; /* 强制显示，不被hide类影响 */
-    transform: none !important; /* 强制显示，不被hide类影响 */
+    z-index: 15;          /* z-index层级 */
+    font-size: 35px;      /* 字体大小 */
+    font-family: 'KaiTi', '楷体', serif; /* 字体样式 */
+    white-space: normal;  /* 文字换行 */
+    opacity: 1 !important; /* 强制显示 */
+    transform: none !important; /* 强制显示 */
 }
+
+/* 第三个文本框位置自定义区域 - 可以直接修改上面的 .coco-text-box-3 中的 top 和 left 值 */
 
 /* 乔任梁页面文本框定位样式 */
 #qiaoPage .coco-text-box-1 {
     position: absolute;
-    top: 25%;             /* 自定义位置：顶部 */
+    top: 18%;             /* 自定义位置：顶部 */
     left: 15%;            /* 自定义位置：左侧 */
     width: auto;
     height: auto;
@@ -3104,9 +3879,9 @@ body {
 
 #qiaoPage .coco-text-box-2 {
     position: absolute;
-    top: 65%;             /* 自定义位置：中间偏下 */
-    right: 15%;           /* 自定义位置：右侧 */
-    width: auto;
+    top: 62%;             /* 自定义位置：中间偏下 */
+    left: 20%;           /* 自定义位置：右侧 */
+    width: 700px;         /* 固定宽度 */
     height: auto;
     min-height: 80px;
     background: rgba(255, 255, 255, 0.95);
@@ -3122,11 +3897,31 @@ body {
     transform: none !important;
 }
 
+#qiaoPage .coco-text-box-3 {
+    position: absolute;
+    top: 89%;             /* 自定义位置：底部 */
+    left: 10%;            /* 自定义位置：左侧 */
+    width: auto;
+    height: auto;
+    min-height: 80px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px 35px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 15;
+    font-size: 35px;
+    font-family: 'KaiTi', '楷体', serif;
+    white-space: normal;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
 /* 高以翔页面文本框定位样式 */
 #gaoPage .coco-text-box-1 {
     position: absolute;
-    top: 20%;             /* 自定义位置：顶部 */
-    left: 20%;            /* 自定义位置：左侧 */
+    top: 22%;             /* 自定义位置：顶部 */
+    left: 33%;            /* 自定义位置：左侧 */
     width: auto;
     height: auto;
     min-height: 80px;
@@ -3145,8 +3940,8 @@ body {
 
 #gaoPage .coco-text-box-2 {
     position: absolute;
-    top: 55%;             /* 自定义位置：中间 */
-    right: 20%;           /* 自定义位置：右侧 */
+    top: 40%;             /* 自定义位置：中间 */
+    right: 3%;           /* 自定义位置：右侧 */
     width: auto;
     height: auto;
     min-height: 80px;
@@ -3165,8 +3960,8 @@ body {
 
 #gaoPage .coco-text-box-3 {
     position: absolute;
-    bottom: 25%;          /* 自定义位置：底部 */
-    left: 25%;            /* 自定义位置：左侧 */
+    bottom: 13%;          /* 自定义位置：底部 */
+    left: 35%;            /* 自定义位置：左侧 */
     width: auto;
     height: auto;
     min-height: 80px;
@@ -3186,7 +3981,7 @@ body {
 /* 响应式设计 */
 @media (max-width: 768px) {
     /* Coco页面响应式 */
-    .coco-text-box-1 {
+    #cocoPage .coco-text-box-1 {
         top: 10%;
         left: 50%;
         width: 90%;
@@ -3196,7 +3991,7 @@ body {
         font-size: 30px;
     }
     
-    .coco-text-box-2 {
+    #cocoPage .coco-text-box-2 {
         top: 60%;
         right: 10%;
         width: 90%;
@@ -3206,7 +4001,7 @@ body {
         font-size: 30px;
     }
     
-    .coco-text-box-3 {
+    #cocoPage .coco-text-box-3 {
         bottom: 15%;
         left: 5%;
         width: 90%;
@@ -3227,6 +4022,13 @@ body {
     #qiaoPage .coco-text-box-2 {
         top: 55%;
         right: 10%;
+        width: 90%;
+        font-size: 30px;
+    }
+    
+    #qiaoPage .coco-text-box-3 {
+        top: 75%;
+        left: 5%;
         width: 90%;
         font-size: 30px;
     }
@@ -4408,6 +5210,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     overflow: hidden;
+    transform: translateX(330px); /* 整体向右移动50px */
 }
 
 /* 确保iframe内容正常显示 */
@@ -4418,17 +5221,68 @@ body {
     border-radius: 12px;
 }
 
+/* 态度分析文本框样式 - 与之前文本框保持一致 */
+.attitude-text-box {
+    position: absolute;
+    width: auto;
+    height: auto;
+    min-height: 80px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px 35px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 15;
+    font-size: 35px;
+    font-family: 'KaiTi', '楷体', serif;
+    white-space: normal;
+    opacity: 1;
+    transform: none;
+}
+
+/* 第一个文本框 - 消极态度 */
+.attitude-text-box-1 {
+    top: 20%;
+    right: 10%;
+}
+
+/* 第二个文本框 - 中立态度 */
+.attitude-text-box-2 {
+    top: 50%;
+    right: 10%;
+}
+
+/* 第三个文本框 - 积极态度 */
+.attitude-text-box-3 {
+    top: 80%;
+    right: 10%;
+}
+
 /* 响应式设计 */
 @media (max-width: 768px) {
     .custom-cover-section .flourish-embed {
         height: 400px;
         margin: 0 15px;
     }
+    
+    #customCoverSection3 .flourish-embed {
+        width: 90%;
+        height: 60vh;
+        max-height: 500px;
+        padding: 15px;
+    }
 }
 
 @media (max-width: 480px) {
     .custom-cover-section .flourish-embed {
         height: 300px;
+    }
+    
+    #customCoverSection3 .flourish-embed {
+        width: 95%;
+        height: 50vh;
+        max-height: 400px;
+        padding: 10px;
     }
 }
 
@@ -4764,3 +5618,127 @@ body {
         text-align: center;
     }
 }
+
+/* 结束前矢量图展示页面样式 */
+.ending-vector-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f5f5f5; /* 简单的背景色 */
+    position: relative;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ending-vector-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+.vector-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    gap: 30px;
+}
+
+.ending-image {
+    width: 28%;
+    height: auto;
+    max-height: 50vh;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.ending-section.in-view .ending-image-left {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.ending-section.in-view .ending-image-center {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.ending-section.in-view .ending-image-right {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+.ending-image:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* Ending页面图片容器样式 */
+.ending-images-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000%;
+    height: 100vh;
+    margin: 0;
+    gap: 58px;
+}
+
+.ending-image {
+    width: 50vw;
+    height: 120vh;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    opacity: 0;
+}
+
+/* Ending页面背景图片样式 */
+.ending-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/ending（背景）.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Ending页面内容样式 */
+.ending-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.ending-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 50px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.ending-title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.ending-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+

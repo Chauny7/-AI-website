@@ -55,31 +55,43 @@ document.addEventListener('DOMContentLoaded', function () {
         techDetailModal: document.getElementById('techDetailModal'),
     };
 
-         // 明确顺序列表（按期望顺序排列）
+                  // 明确顺序列表（按期望顺序排列）
      const SECTIONS = [
          '#newPage1',
          '#newPage2', 
          '#newPage3',
          '#newPage4',
          '#subtitleSection',
-         '#chapter1Section',
+         '#chapter1Section', 
+         '#transitionSection', // 过渡部分现在位于四张照片模块之后
+         '#newsLiuDehuaSection', // 刘德华新闻页面
+         '#newsBaoSection', // 包新闻页面
+         '#blackBackgroundSection', // 第一个黑色背景页面
+         '#blackBackgroundSection2', // 第二个黑色背景页面（bubble-chart）
          '.analysis-section',
-         '#transitionSection',
          '#chapter2Section',
          '#chapter2PhotosSection',
-                  '#chapter2TransitionSection', // 添加新的第二章节过渡页面
-          '#customBackgroundSection', // 添加新的自定义背景页面
-          '#customCoverSection1', // 添加自定义封面页面1
-          '#customCoverSection2', // 添加自定义封面页面2
-          '#chapter3Section',
-          '#chapter3PhotosSection', // 添加第三幕照片展示区
-          '#chapter3CustomBackgroundSection', // 添加第三幕自定义背景页面
-          '#chapter3CustomCoverSection1', // 添加第三幕自定义封面页面1
-          '#chapter3CustomCoverSection2', // 添加第三幕自定义封面页面2
-          '#chapter4Section',
-         '#chapter4PhotosSection',
-         '#ending'
-     ].filter(Boolean);
+ // 添加新的第二章节过渡页面
+           '#customCoverSection1', // 添加自定义封面页面1
+
+           '#customBackgroundSection', // 添加新的自定义背景页面
+           '#customCoverSection2', // 添加自定义封面页面2
+           '#priceBackgroundSection', // 添加价格背景页面
+
+           '#emotionTendencySection', // 添加情感倾向背景页面
+           '#customCoverSection3', // 添加自定义封面页面3
+           '#chapter2TransitionSection',
+           '#chapter3Section',
+           '#chapter3PhotosSection', // 添加第三幕照片展示区
+           '#chapter3CustomBackgroundSection', // 添加第三幕自定义背景页面
+           '#chapter3CustomCoverSection3', // 添加第三幕自定义封面页面3
+           '#chapter3CustomCoverSection1', // 添加第三幕自定义封面页面1
+           '#chapter3CustomCoverSection2', // 添加第三幕自定义封面页面2
+           '#chapter4Section',
+           '#chapter4PhotosSection',
+           '#ending',
+           '#endingCustomCoverSection' // 添加结束前自定义背景页面
+      ].filter(Boolean);
 
     // --- UTIL ---
     function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
@@ -144,8 +156,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const elTarget = document.querySelector(SECTIONS[i]);
             if (!elTarget) continue;
             const rect = elTarget.getBoundingClientRect();
-            // 调整检测阈值，让页面切换更准确
-            if (rect.top < vh * 0.5 && rect.bottom > vh * 0.3) return i;
+            // 调整检测阈值，让页面切换更准确，特别是对于新添加的页面
+            // 使用更宽松的阈值，确保新页面不会被跳过
+            if (rect.top < vh * 0.7 && rect.bottom > vh * 0.1) {
+                // 添加调试信息，帮助确认页面检测
+                if (SECTIONS[i] === '#endingCustomCoverSection') {
+                    console.log('检测到endingCustomCoverSection页面，索引:', i);
+                }
+                return i;
+            }
         }
         return -1;
     }
@@ -241,11 +260,17 @@ document.addEventListener('DOMContentLoaded', function () {
          el.hero, el.newPage1, el.newPage2, el.newPage3, el.newPage4, el.subtitleSection, el.chapter1Section, el.chapter2Section,
          el.chapter2PhotosSection, el.chapter3Section, el.chapter3PhotosSection, el.chapter4Section,
                   el.chapter4PhotosSection, el.analysisSection, el.transitionSection, el.chapter2TransitionSection, el.customBackgroundSection,
+          document.getElementById('priceBackgroundSection'), // 添加价格背景页面
           document.getElementById('chapter3CustomBackgroundSection'), // 添加第三幕自定义背景页面
           document.getElementById('customCoverSection1'), // 添加自定义封面页面1
           document.getElementById('customCoverSection2'), // 添加自定义封面页面2
+          document.getElementById('emotionTendencySection'), // 添加情感倾向背景页面
+          document.getElementById('customCoverSection3'), // 添加自定义封面页面3
           document.getElementById('chapter3CustomCoverSection1'), // 添加第三幕自定义封面页面1
-          document.getElementById('chapter3CustomCoverSection2') // 添加第三幕自定义封面页面2
+          document.getElementById('chapter3CustomCoverSection2'), // 添加第三幕自定义封面页面2
+          document.getElementById('chapter3CustomCoverSection3'), // 添加第三幕自定义封面页面3
+          document.getElementById('endingCustomCoverSection'), // 添加结束前自定义背景页面
+          document.getElementById('ending') // 添加ending页面
      ].forEach(n => { if (n) fadeObserver.observe(n); });
 
     // 单独的字幕浮现（如需）
@@ -355,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (handled) { e.preventDefault(); return; }
 
         // 其他区：基于 SECTIONS 的显式导航
-        if (throttleOnce(600)) return; // 减少节流时间，让滚动更流畅
+        if (throttleOnce(500)) return; // 进一步减少节流时间，让滚动更流畅
         if (e.deltaY > 0) scrollToNextSection(); else scrollToPreviousSection();
     }, { passive: false });
 
@@ -402,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (handled) return;
 
-        if (throttleOnce(600)) return; // 减少节流时间
+        if (throttleOnce(500)) return; // 进一步减少节流时间
         if (delta > 0) scrollToNextSection(); else scrollToPreviousSection();
     }, { passive: true });
 
@@ -458,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (handled) { e.preventDefault(); return; }
 
-        if (throttleOnce(600)) return; // 减少节流时间
+        if (throttleOnce(500)) return; // 进一步减少节流时间
         if (delta > 0) scrollToNextSection(); else scrollToPreviousSection();
     });
 
@@ -577,6 +602,59 @@ document.addEventListener('DOMContentLoaded', function () {
     // 将函数绑定到全局作用域，以便HTML中的onclick能调用
     window.showTechDetail = showTechDetail;
     window.closeTechDetail = closeTechDetail;
+    
+    // 技术预览界面函数
+    function showPreview(techType) {
+        const previewContainer = document.getElementById('techDetailPreview');
+        if (!previewContainer) return;
+        
+        // 隐藏所有预览内容
+        const allPreviews = previewContainer.querySelectorAll('.preview-content');
+        allPreviews.forEach(preview => preview.classList.remove('active'));
+        
+        // 显示对应的预览内容
+        const targetPreview = document.getElementById(techType + 'Preview');
+        if (targetPreview) {
+            targetPreview.classList.add('active');
+        }
+        
+        // 添加显示动画
+        previewContainer.style.opacity = '0';
+        previewContainer.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            previewContainer.style.opacity = '1';
+            previewContainer.style.transform = 'translateY(0)';
+        }, 50);
+    }
+    
+    function closePreview() {
+        const previewContainer = document.getElementById('techDetailPreview');
+        if (!previewContainer) return;
+        
+        // 隐藏所有预览内容
+        const allPreviews = previewContainer.querySelectorAll('.preview-content');
+        allPreviews.forEach(preview => preview.classList.remove('active'));
+        
+        // 显示默认概览内容
+        const overviewPreview = document.getElementById('overviewPreview');
+        if (overviewPreview) {
+            overviewPreview.classList.add('active');
+        }
+        
+        // 添加隐藏动画
+        previewContainer.style.opacity = '0';
+        previewContainer.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            previewContainer.style.opacity = '1';
+            previewContainer.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    // 将预览函数绑定到全局作用域
+    window.showPreview = showPreview;
+    window.closePreview = closePreview;
 
     // 绑定模态框点击事件
     if (el.techDetailModal) {
@@ -893,11 +971,13 @@ document.addEventListener('DOMContentLoaded', function() {
           // 观察新增的自定义封面页面
           const customCoverSection1 = document.getElementById('customCoverSection1');
           const customCoverSection2 = document.getElementById('customCoverSection2');
+          const customCoverSection3 = document.getElementById('customCoverSection3');
           const chapter3CustomCoverSection1 = document.getElementById('chapter3CustomCoverSection1');
           const chapter3CustomCoverSection2 = document.getElementById('chapter3CustomCoverSection2');
 
           if (customCoverSection1) textBoxObserver.observe(customCoverSection1);
           if (customCoverSection2) textBoxObserver.observe(customCoverSection2);
+          if (customCoverSection3) textBoxObserver.observe(customCoverSection3);
           if (chapter3CustomCoverSection1) textBoxObserver.observe(chapter3CustomCoverSection1);
           if (chapter3CustomCoverSection2) textBoxObserver.observe(chapter3CustomCoverSection2);
     
@@ -1424,4 +1504,25 @@ function hideStaffPage() {
 // 将制作团队页面函数暴露到全局作用域
 window.showStaffPage = showStaffPage;
 window.hideStaffPage = hideStaffPage;
+
+// 新闻页面交互函数
+function showLiuDehuaNews() {
+    const floatingImage = document.getElementById('liuDehuaFloatingImage');
+    if (floatingImage) {
+        floatingImage.classList.add('show');
+        // 照片浮现后保持显示，不自动消失
+    }
+}
+
+function showBaoNews() {
+    const floatingImage = document.getElementById('baoFloatingImage');
+    if (floatingImage) {
+        floatingImage.classList.add('show');
+        // 照片浮现后保持显示，不自动消失
+    }
+}
+
+// 将新闻交互函数暴露到全局作用域
+window.showLiuDehuaNews = showLiuDehuaNews;
+window.showBaoNews = showBaoNews;
 
