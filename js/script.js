@@ -68,11 +68,13 @@ document.addEventListener('DOMContentLoaded', function () {
          '#newsBaoSection', // 包新闻页面
          '#blackBackgroundSection', // 第一个黑色背景页面
          '#blackBackgroundSection2', // 第二个黑色背景页面（bubble-chart）
+         '#blackBackgroundSection3', // 第三个黑色背景页面（自定义背景）
          '.analysis-section',
          '#chapter2Section',
          '#chapter2PhotosSection',
  // 添加新的第二章节过渡页面
-           '#customCoverSection1', // 添加自定义封面页面1
+           '#customBackgroundSectionNews', // 添加新闻meeting you and 张背景页面
+         '#customCoverSection1', // 添加自定义封面页面1
 
            '#customBackgroundSection', // 添加新的自定义背景页面
            '#customCoverSection2', // 添加自定义封面页面2
@@ -858,10 +860,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     showTextBoxesSequentially(transitionSection);
                 } else if (sectionId === 'chapter2TransitionSection') {
                     showTextBoxesSequentially(chapter2TransitionSection);
+                } else if (sectionId === 'chapter3CustomCoverSection2') {
+                    // 为第三幕自定义封面页面2添加动画效果
+                    entry.target.classList.add('in-view');
+                } else if (sectionId === 'customBackgroundSectionNews') {
+                    // 为新闻页面添加动画效果
+                    entry.target.classList.add('in-view');
                 }
             } else {
                 // 页面离开视口后，隐藏所有文本框
-                hideAllTextBoxes();
+                if (entry.target.id === 'chapter3CustomCoverSection2') {
+                    entry.target.classList.remove('in-view');
+                } else if (entry.target.id === 'customBackgroundSectionNews') {
+                    entry.target.classList.remove('in-view');
+                } else {
+                    hideAllTextBoxes();
+                }
             }
         });
     }, { 
@@ -875,6 +889,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     if (chapter2TransitionSection) {
         textBoxObserver.observe(chapter2TransitionSection);
+    }
+    
+    // 观察新闻页面
+    const customBackgroundSectionNews = document.getElementById('customBackgroundSectionNews');
+    if (customBackgroundSectionNews) {
+        textBoxObserver.observe(customBackgroundSectionNews);
     }
     
          // 观察自定义背景页面
@@ -1525,4 +1545,85 @@ function showBaoNews() {
 // 将新闻交互函数暴露到全局作用域
 window.showLiuDehuaNews = showLiuDehuaNews;
 window.showBaoNews = showBaoNews;
+
+// 第三幕自定义封面页面1的图表切换功能
+function initChapter3ChartSwitch() {
+    const wordCloudChart = document.getElementById('wordCloudChart');
+    const mapChart = document.getElementById('mapChart');
+    const pictogramChart = document.getElementById('pictogramChart');
+    const section = document.getElementById('chapter3CustomCoverSection1');
+    const switchButton = document.getElementById('chartSwitchButton');
+    const buttonText = document.querySelector('.button-text');
+    
+    if (!wordCloudChart || !mapChart || !pictogramChart || !section || !switchButton) {
+        console.log('图表切换初始化失败：缺少必要元素');
+        return;
+    }
+    
+    let currentChartIndex = 0; // 0: map图表, 1: word-cloud图表, 2: pictogram图表
+    let isTransitioning = false;
+    
+    console.log('图表切换功能初始化成功');
+    console.log('初始状态：显示map图表');
+    
+    // 确保初始状态正确
+    mapChart.style.display = 'block';
+    mapChart.style.opacity = '1';
+    wordCloudChart.style.display = 'none';
+    wordCloudChart.style.opacity = '0';
+    pictogramChart.style.display = 'none';
+    pictogramChart.style.opacity = '0';
+    
+    // 监听按钮点击事件
+    switchButton.addEventListener('click', function() {
+        if (isTransitioning) {
+            console.log('正在过渡中，忽略点击');
+            return;
+        }
+        
+        console.log('按钮点击，当前图表索引:', currentChartIndex);
+        
+        // 设置过渡状态
+        isTransitioning = true;
+        
+        // 隐藏当前图表
+        const currentChart = [mapChart, wordCloudChart, pictogramChart][currentChartIndex];
+        currentChart.style.opacity = '0';
+        
+        setTimeout(() => {
+            currentChart.style.display = 'none';
+            
+            // 切换到下一个图表
+            currentChartIndex = (currentChartIndex + 1) % 3;
+            const nextChart = [mapChart, wordCloudChart, pictogramChart][currentChartIndex];
+            nextChart.style.display = 'block';
+            
+            setTimeout(() => {
+                nextChart.style.opacity = '1';
+                setTimeout(() => {
+                    isTransitioning = false;
+                    console.log('切换到图表完成，当前索引:', currentChartIndex);
+                }, 200);
+            }, 50);
+        }, 500);
+        
+        // 更新按钮文字
+        const chartNames = ['地图视图', '词云视图', '监管看法图'];
+        buttonText.textContent = '切换到' + chartNames[(currentChartIndex + 1) % 3];
+    });
+}
+
+// 页面加载完成后初始化图表切换功能
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM加载完成，开始初始化图表切换功能');
+    setTimeout(() => {
+        initChapter3ChartSwitch();
+    }, 1000); // 延迟1秒初始化，确保所有元素都已加载
+});
+
+// 也监听window的load事件作为备用
+window.addEventListener('load', function() {
+    console.log('页面完全加载完成，再次尝试初始化图表切换功能');
+    initChapter3ChartSwitch();
+});
 
